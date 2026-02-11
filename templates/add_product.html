@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product - Admin Dashboard</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand">Admin Dashboard</a>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Home</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <br>
+        <h2>Add Product</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="manufacture_date">Manufacture Date</label>
+                <input type="date" class="form-control" id="manufacture_date" name="manufacture_date" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry_date">Expiry Date</label>
+                <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="unit">Unit (e.g., Rs/Kg, Rs/Litre, etc.)</label>
+                <input type="text" class="form-control" id="unit" name="unit" required>
+            </div>
+            <div class="form-group">
+                <label for="available_quantity">Available Quantity</label>
+                <input type="number" class="form-control" id="available_quantity" name="available_quantity" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="section_id">Category</label>
+              <select class="form-control" id="section_id" name="section_id" required>
+               {% for section in sections %}
+                <option value="{{ section[0] }}">{{ section[1] }}</option>
+                {% endfor %}
+                  </select>
+            </div>
+               {% if error_message %}
+            <div class="alert alert-danger mt-2" role="alert">
+            {{ error_message }}
+            </div>
+            {% endif %}   
+            <div class="form-group mt-4">
+                <label for="image">Product Image</label>
+                <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 mb-5">Add Product</button>
+        </form>
+    </div>
+</body>
+</html>

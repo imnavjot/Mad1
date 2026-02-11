@@ -1,0 +1,14 @@
+
+/* Hiding horizontal scrollbar */
+.horizontal-scroll-container {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE and Edge */
+}
+/* For Webkit browsers (Chrome, Safari) */
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
+}

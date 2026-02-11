@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Insights</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            
+            <a class="navbar-brand">Grocery Store - Admin Dashboard</a>
+            
+            <a href="/admin/dashboard" class="btn btn-secondary ml-auto">Home</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+      <br>
+        <h2>Admin Insights</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Products with Low Quantity</h4>
+                        <ul class="list-group">
+                            {% for product in low_quantity_products %}
+                            <li class="list-group-item">{{ product[0] }} (Available Quantity: {{ product[1] }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Registered Users Count</h4>
+                        <p>{{ registered_users_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Most Sold Products</h4>
+                        <img src="{{ url_for('static', filename='images/most_sold_chart.png') }}" alt="Most Sold Products Chart" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+      <br><br>
+    </div>
+</body>
+</html>

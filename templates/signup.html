@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Grocery Store</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand">Grocery Store</a>
+            <a href="/" class="btn btn-secondary ml-auto">Home</a>
+        </div>
+    </nav>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4">
+            <h2 class="card-title mb-4">Sign Up</h2>
+            <form method="post" action="/signup">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="mt-2 btn btn-primary">Sign Up</button>
+            </form>
+                    {% if success_message %}
+                    <div class="alert alert-success mt-2" role="alert">
+                    {{ success_message }}
+                    </div>
+                    {% endif %}
+                    {% if error_message %}
+                    <div class="alert alert-danger mt-2" role="alert">
+                    {{ error_message }}
+                    </div>
+                    {% endif %}
+            <p class="mt-3">Already have an account? <a href="/login">Login</a></p>
+            <p class="mb-0">Admin or Store Manager? <a href="/admin/login">Admin Login</a></p>
+        </div>
+    </div>
+</body>
+</html>

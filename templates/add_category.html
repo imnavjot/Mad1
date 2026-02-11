@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Category - Grocery Store</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand">Grocery Store - Add Category</a>
+            <a href="/admin/dashboard" class="btn btn-secondary ml-auto">Home</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <br>
+        <h2>Add New Category</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Category Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+               {% if error_message %}
+            <div class="alert alert-danger mt-2" role="alert">
+            {{ error_message }}
+            </div>
+            {% endif %}       
+            <div class="form-group mt-4">
+                <label for="image">Category Image</label>
+                <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Add Category</button>
+        </form>
+    </div>
+</body>
+</html>

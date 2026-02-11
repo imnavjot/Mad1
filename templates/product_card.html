@@ -1,0 +1,24 @@
+<div class="card" style="width: 250px; display: inline-block; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative;">
+    <a href="{{ url_for('user_cart') }}">
+        <img src="{{ url_for('static', filename='images/' + product[8]) }}" alt="{{ product[1] }}" class="card-img-top product-image" style="height: 250px;">
+    </a>
+    <div class="card-body">
+        <h3 class="card-title">{{ product[1] }}</h3>
+        <p class="card-text">Price: {{ product[4] }} {{ product[5] }}</p>
+      <div class="d-flex align-items-center">
+        <form action="{{ url_for('add_to_cart') }}" method="POST" class="d-flex">
+            <input type="hidden" name="product_id" value="{{ product[0] }}">
+            <input type="number" class="form-control" name="quantity" value="{{ get_cart_quantity(product[0], user_cartt) }}" min="1" max="{{ product[6] }}" style="max-width: 60px; margin-right: 10px;" required>
+            <button class="btn btn-primary" type="submit" style="margin-right: 10px;" {% if product[6] == 0 %}disabled{% endif %}>
+                {% if product[6] == 0 %}No Stock{% else %}Add{% endif %}
+            </button>
+          </form>
+            {% if get_cart_quantity(product[0], user_cartt) != 0 %}
+        <form action="{{ url_for('remove_from_cart') }}" method="POST">
+            <input type="hidden" name="product_id" value="{{ product[0] }}">
+            <button class="btn btn-danger">Remove</button>
+        </form>
+            {% endif %}
+        </div>
+    </div>
+</div>

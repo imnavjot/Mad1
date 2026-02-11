@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category - Grocery Store</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand">Grocery Store - Edit Category</a>
+            <a href="/admin/dashboard" class="btn btn-secondary ml-auto">Home</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <br>
+        <h2>Edit Category</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Category Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ category[0] }}" required>
+            </div>
+            <div class="form-group mt-3">
+                <label>Existing Image:</label>
+                {% if category[1] %}
+                <img src="{{ url_for('static', filename='images/' + category[1]) }}" alt="Category Image" class="img-thumbnail" style="max-width: 200px;">
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+                {% if error_message %}
+                <div class="alert alert-danger mt-3" role="alert">
+                {{ error_message }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group mt-3">
+                <label for="image">Change Image:</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

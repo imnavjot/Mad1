@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Product - Grocery Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand">Grocery Store - Remove Product</a>
+            <a href="/admin/dashboard" class="btn btn-secondary ml-auto">Home</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <br>
+        <h2>Remove Product</h2>
+        <p>Are you sure you want to remove the Product '{{ product }}'?</p>
+        <form method="post">
+            <div class="d-flex">
+                <button type="submit" class="btn btn-danger" style="margin-right: 10px;">Yes, Remove</button>
+                <a href="/admin/dashboard" class="btn btn-secondary">No, Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
